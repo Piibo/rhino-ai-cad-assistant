@@ -1,0 +1,31 @@
+{
+  "_note": "Wortlaut der vier Agency-Items (Rafner et al. 2025: Self-Efficacy, Control, Autonomy, Ownership), Stand wie im Gerhard-Fragebogen (fragebogen-voll.md / fragebogen-spec.md §5.2.3). Diese Markdown-Fassung ist fuehrend (loest die fruehere 'Plugin-Stand fuehrend'-Notiz ab); vor dem Pilot mit Gerhard final bestaetigen. IDs bleiben stabil (Speicherung in schemas.py _PerConditionSurveyFields haengt an den IDs, nicht am Label).",
+  "scale": {
+    "min": 1,
+    "max": 7,
+    "anchor_min": "stimme gar nicht zu",
+    "anchor_max": "stimme voll zu"
+  },
+  "items": [
+    {
+      "id": "self_efficacy",
+      "dimension": "Self-Efficacy",
+      "label": "Ich habe darauf vertraut, dass ich die nötigen Fähigkeiten habe, die Aufgabe zu lösen."
+    },
+    {
+      "id": "control",
+      "dimension": "Control",
+      "label": "Ich hatte das Gefühl, bewusst zu entscheiden und zu steuern, was im Modell passiert."
+    },
+    {
+      "id": "autonomy",
+      "dimension": "Autonomy",
+      "label": "Ich konnte frei wählen, welchen Weg ich beim Entwurf einschlage, und meine eigenen Ideen einbringen."
+    },
+    {
+      "id": "ownership",
+      "dimension": "Ownership",
+      "label": "Ich habe einen wesentlichen Teil zum Entwurf beigetragen und fühle mich dafür verantwortlich."
+    }
+  ]
+}

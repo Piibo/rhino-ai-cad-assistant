@@ -1,0 +1,184 @@
+﻿@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Design-Tokens — heller Fintech-Dashboard-Look (Referenz: soft gray-blue
+ * Canvas, weiße Cards mit großem Radius, Akzente in Blau/Orange/Grün).
+ * Nur Light Mode; ein Dark-Theme ist bewusst nicht vorgesehen.
+ */
+@layer base {
+  :root {
+    /* Canvas & Flächen — Claude-UI-Look: off-white Canvas (#FDFDFC); die weißen
+       Cards treten minimal vor den Canvas und werden zusätzlich über
+       1px-Hairlines (shadow-panel) getrennt. */
+    --background: 60 20% 99%;
+    --foreground: 228 16% 12%; /* near-black Text */
+    --card: 0 0% 100%;
+    --card-foreground: 228 16% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 228 16% 12%;
+
+    /* Akzentfarben aus dem Referenz-Design */
+    --primary: 222 92% 56%; /* vivid royal blue (VISA-Card) */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 22% 95%;
+    --secondary-foreground: 228 12% 22%;
+    --muted: 220 20% 94%;
+    --muted-foreground: 226 9% 44%;
+    --accent: 221 30% 93%;
+    --accent-foreground: 228 12% 18%;
+    --destructive: 0 74% 52%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Sekundär-Akzente: Orange (Statistics-Card) und Grün (Pills/Charts).
+       Die -deep-Varianten sind für TEXT auf den Soft-Flächen (>= 4.5:1,
+       WCAG AA); die leuchtenden Grundtöne nur für Dots/Icons/Füllungen. */
+    --brand-orange: 16 86% 53%;
+    --brand-orange-soft: 18 90% 95%;
+    --brand-orange-deep: 16 78% 36%;
+    --brand-blue: 222 92% 56%;
+    --brand-blue-soft: 222 90% 95%;
+    --brand-blue-deep: 222 72% 40%;
+    --success: 140 42% 42%;
+    --success-soft: 95 55% 93%;
+    --success-deep: 140 50% 26%;
+
+    --border: 221 18% 87%;
+    --input: 221 18% 85%;
+    --ring: 222 92% 56%;
+    --radius: 1rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    /* Stabile Scrollbar-Optik im gesamten Plugin */
+    scrollbar-color: hsl(222 14% 78%) transparent;
+    scrollbar-width: thin;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family:
+      "Inter",
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      "Helvetica Neue",
+      Arial,
+      sans-serif;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    /* Flacher Canvas (Claude-UI-Look) — kein Verlauf. */
+    background: hsl(var(--background));
+    min-height: 100vh;
+  }
+
+  /* Headlines/Zahlen: markantere Display-Schrift wie im Referenz-Design */
+  .font-display {
+    font-family:
+      "Plus Jakarta Sans",
+      "Inter",
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      sans-serif;
+    letter-spacing: -0.01em;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(222 14% 78%);
+    border-radius: 9999px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(222 12% 66%);
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+}
+
+@layer utilities {
+  @keyframes typing-dot {
+    0%,
+    60%,
+    100% {
+      transform: translateY(0);
+      opacity: 0.35;
+    }
+    30% {
+      transform: translateY(-3px);
+      opacity: 1;
+    }
+  }
+  .animate-typing-dot {
+    animation: typing-dot 1.2s ease-in-out infinite;
+  }
+
+  @keyframes count-roll {
+    0% {
+      transform: translateY(85%);
+      opacity: 0;
+    }
+    55% {
+      transform: translateY(-12%);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  .animate-count-roll {
+    animation: count-roll 260ms cubic-bezier(0.2, 0.85, 0.25, 1);
+  }
+
+  @keyframes pending-pulse {
+    0%,
+    100% {
+      opacity: 0.55;
+    }
+    50% {
+      opacity: 0.85;
+    }
+  }
+  .animate-pending-pulse {
+    animation: pending-pulse 1.2s ease-in-out infinite;
+  }
+
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Zahlen in Messwerten/Slidern bündig ausrichten */
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-typing-dot,
+    .animate-count-roll,
+    .animate-pending-pulse,
+    .animate-ping,
+    .animate-pulse,
+    .animate-in,
+    .animate-out {
+      animation: none;
+    }
+  }
+}

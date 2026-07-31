@@ -1,0 +1,11 @@
+# MCP
+mcp[cli]>=1.3.0
+
+# HTTP (for Grasshopper connection)
+requests
+
+# Image processing (for viewport capture)
+pillow
+
+# Optional: env file support
+python-dotenv

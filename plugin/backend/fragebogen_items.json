@@ -1,0 +1,326 @@
+{
+  "_note": "Lean-Fragebogen (Dokumente/studie/fragebogen-spec.md, Lean-Variante: kein NASA-TLX, keine Tapal-Items). Wortlaute folgen dem Gerhard-Fragebogen fragebogen.md (Markdown ist führend); Änderungen hier erzeugen einen neuen fragebogen_version_hash und sind vor dem Pilot mit Gerhard abzustimmen. Die vier Agency-Items leben in agency_items.json und werden vom Backend in den Per-Bedingungs-Block gemerged. Z1/Z2 (Zusammenarbeit mit der KI) stehen als collaboration_items; W8 (Rückfragen/Auswahlangebote) steht als tool_item.",
+  "version": "lean-v2",
+  "scale_likert7": {
+    "min": 1,
+    "max": 7,
+    "anchor_min": "stimme gar nicht zu",
+    "anchor_max": "stimme voll zu"
+  },
+  "per_condition": {
+    "intro": "Im Folgenden werden einige kurze Fragen zur eben absolvierten Aufgabe und Ihrer Erfahrung mit dem System gestellt. Es gibt keine richtigen oder falschen Antworten — Ihre persönliche Einschätzung ist gefragt. Freitextfelder sind optional.",
+    "csi_items": [
+      {
+        "id": "csi_exploration",
+        "dimension": "Exploration",
+        "label": "In dieser Aufgabe konnte ich verschiedene Entwurfsmöglichkeiten erkunden."
+      },
+      {
+        "id": "csi_expressiveness",
+        "dimension": "Ausdruck",
+        "label": "Ich konnte meine Entwurfsabsichten gegenüber dem System gut zum Ausdruck bringen."
+      },
+      {
+        "id": "csi_immersion",
+        "dimension": "Immersion",
+        "label": "Während der Arbeit bin ich tief in den Entwurfsprozess eingetaucht."
+      },
+      {
+        "id": "csi_enjoyment",
+        "dimension": "Freude",
+        "label": "Die Arbeit mit dem System hat mir Freude bereitet."
+      },
+      {
+        "id": "csi_results_worth_effort",
+        "dimension": "Aufwand",
+        "label": "Das, was ich am Ende erreicht habe, war den Aufwand wert."
+      },
+      {
+        "id": "csi_collaboration",
+        "dimension": "Mitgestaltung",
+        "label": "Das System hat sich wie ein Mitgestalter verhalten, mit dem ich zusammenarbeite."
+      }
+    ],
+    "collaboration_items": [
+      {
+        "id": "collab_editor_trap",
+        "dimension": "Eigene Gestaltung vs. Nachbessern",
+        "label": "Ich habe vor allem nachgebessert oder angenommen, was die KI vorschlug, statt selbst zu gestalten.",
+        "conditions": ["basis", "werkzeug"],
+        "invers": true
+      },
+      {
+        "id": "collab_expression_limit",
+        "dimension": "Ausdrucksgrenze",
+        "label": "Es gab Stellen oder Formen, die ich der KI nicht eindeutig vermitteln konnte.",
+        "conditions": ["basis", "werkzeug"],
+        "invers": true
+      }
+    ],
+    "competence_items": [
+      {
+        "_note": "Z3 Wahrnehmungs-Check 'perceived system capability' (ability-Dimension Mayer et al. 1995 / Capable-Facette MDMT; KEINE Trust-Messung). Bewusst am ABSOLUTEN ENDE des Per-Bedingungs-Blocks platziert, damit es die vorangehenden Agency-/CSI-/Werkzeug-Ratings nicht framet (Hauser et al. 2018; Kühnen 2010; Fayant et al. 2017 — Manipulation-Checks sind selbst Ereignisse mit Reihenfolge-Effekten).",
+        "id": "collab_system_competence",
+        "dimension": "Systemkompetenz",
+        "label": "Das System war fachlich in der Lage, die von mir gewünschten Entwurfsschritte im Modell umzusetzen.",
+        "conditions": ["basis", "werkzeug"],
+        "invers": false
+      }
+    ],
+    "tool_not_used_label": "habe ich nicht genutzt",
+    "tool_items": [
+      {
+        "id": "tool_text",
+        "dimension": "Text-Eingabe",
+        "label": "Über Text konnte ich der KI gut vermitteln, was ich erreichen wollte.",
+        "conditions": ["basis", "werkzeug"],
+        "gate": null
+      },
+      {
+        "id": "tool_image_ref",
+        "dimension": "Referenzbild",
+        "label": "Hochgeladene Referenzbilder haben der KI geholfen, meine Entwurfsabsicht zu verstehen.",
+        "conditions": ["basis", "werkzeug"],
+        "gate": "image_uploaded"
+      },
+      {
+        "id": "tool_viewport_feedback",
+        "dimension": "Visuelles Feedback",
+        "label": "Über den Rhino-Viewport konnte ich gut verfolgen, was die KI am Modell verändert.",
+        "conditions": ["basis", "werkzeug"],
+        "gate": null
+      },
+      {
+        "id": "tool_selection_badge",
+        "dimension": "Selektion",
+        "label": "Es war hilfreich, dass meine Rhino-Auswahl als Kontext im Chat sichtbar war.",
+        "conditions": ["werkzeug"],
+        "gate": null
+      },
+      {
+        "id": "tool_pick",
+        "dimension": "Pick-Modus",
+        "label": "Über das gezielte Anklicken einer Stelle im Viewport konnte ich der KI besser zeigen, was ich meine, als über Text.",
+        "conditions": ["werkzeug"],
+        "gate": null
+      },
+      {
+        "id": "tool_slider",
+        "dimension": "Parameter-Slider",
+        "label": "Über die Slider konnte ich Werte direkt steuern, ohne sie der KI in Worten beschreiben zu müssen.",
+        "conditions": ["werkzeug"],
+        "gate": "slider_used"
+      },
+      {
+        "id": "tool_call_cards",
+        "dimension": "Tool-Call-Karten",
+        "label": "Was die KI im Modell getan hat, war für mich nachvollziehbar.",
+        "conditions": ["werkzeug"],
+        "gate": null
+      },
+      {
+        "id": "tool_dialog_offers",
+        "dimension": "Rückfragen & Auswahlangebote",
+        "label": "Die Rückfragen und Auswahlangebote des Systems (Nachfragen, Bestätigungen) haben geholfen, dass wir auf dasselbe Ziel hinarbeiten.",
+        "conditions": ["werkzeug"],
+        "gate": null
+      },
+      {
+        "id": "tool_variants",
+        "dimension": "Varianten",
+        "label": "Die Variantenfunktion hat mir geholfen, Alternativen nebeneinander zu vergleichen.",
+        "conditions": ["werkzeug"],
+        "gate": "feature_variants"
+      },
+      {
+        "id": "tool_sketch",
+        "dimension": "Skizze",
+        "label": "Über das Anhängen eines Viewport-Bildes, mit oder ohne eigene Skizze darauf, konnte ich der KI Ideen zeigen, die sich in Worten schwer beschreiben lassen.",
+        "conditions": ["werkzeug"],
+        "gate": "feature_sketch"
+      }
+    ],
+    "feature_flags": {
+      "_note": "Gating für optionale Werkzeug-Items (Spec §4.3). variants werden zusätzlich gegen build_tool_list('werkzeug') geprüft; sketch ist eine UI-Affordanz ohne LLM-Tool und wird nur über dieses Flag geschaltet (vor dem Pilot prüfen). Das Lock-Item wurde am 11.06.2026 mit dem Lock-Feature entfernt. Das Measure-Item wurde am 15.06.2026 entfernt (redundant — KI misst selbst, Punkt-Pick lokalisiert; keine eigene Auswertungsspur; nicht aufgabenkritisch).",
+      "feature_sketch": true
+    },
+    "unused_question": {
+      "werkzeug_label": "Welche der zur Verfügung stehenden Werkzeuge in dieser Bedingung haben Sie kaum oder gar nicht benutzt? Bitte alle auswählen, die zutreffen, und kurz erläutern, warum.",
+      "basis_label": "Welche Möglichkeiten haben Ihnen gefehlt, um der KI Ihre Entwurfsabsicht noch besser verständlich zu machen?"
+    },
+    "reflection": {
+      "id": "reflection",
+      "label": "Beschreiben Sie kurz eine Situation in dieser Aufgabe, in der Ihre Zusammenarbeit mit dem System besonders gut oder besonders schwierig war. Was war der Auslöser?",
+      "max_chars": 500
+    }
+  },
+  "final": {
+    "intro": "Zum Abschluss einige Fragen, die beide Bedingungen vergleichen. Mit „erste/zweite Bedingung“ ist die Reihenfolge gemeint, in der Sie die Aufgaben bearbeitet haben.",
+    "preference": {
+      "label": "Stellen Sie sich vor, Sie würden morgen einen eigenen Möbelentwurf in Rhino mit diesem System bearbeiten. Welche der beiden Bedingungen würden Sie wählen?",
+      "options": [
+        { "id": "first", "label": "Die erste Bedingung" },
+        { "id": "second", "label": "Die zweite Bedingung" },
+        { "id": "depends", "label": "Hängt von der Aufgabe ab" },
+        { "id": "unknown", "label": "Weiß nicht" }
+      ],
+      "why_label": "Bitte begründen Sie Ihre Wahl in einem bis drei Sätzen.",
+      "why_max_chars": 300
+    },
+    "v2": {
+      "label": "Bitte vergleichen Sie die beiden Bedingungen auf den folgenden Dimensionen.",
+      "scale": {
+        "min": -2,
+        "max": 2,
+        "anchor_min": "erste Bedingung deutlich besser",
+        "anchor_mid": "etwa gleich",
+        "anchor_max": "zweite Bedingung deutlich besser"
+      },
+      "dimensions": [
+        { "id": "v2_control", "label": "Kontrolle über den Entwurfsprozess" },
+        {
+          "id": "v2_expressiveness",
+          "label": "Möglichkeit, eigene Entwurfsabsichten auszudrücken"
+        },
+        {
+          "id": "v2_exploration",
+          "label": "Erkundung verschiedener Entwurfsmöglichkeiten"
+        },
+        { "id": "v2_speed", "label": "Geschwindigkeit beim Vorankommen" },
+        { "id": "v2_trust", "label": "Vertrauen in das, was das System tut" },
+        {
+          "id": "v2_ownership",
+          "label": "Empfinden, dass der Entwurf der eigene ist"
+        }
+      ]
+    },
+    "ranking": {
+      "label": "Welche der Werkzeuge in der Werkzeug-Bedingung waren für Sie am wichtigsten? Wählen Sie bis zu drei und bringen Sie sie in eine Reihenfolge (1 = am wichtigsten).",
+      "max_rank": 3
+    },
+    "hybrid": {
+      "id": "hybrid_mode",
+      "label": "Wenn das System einen Modus hätte, der zwischen reiner Chat-Steuerung und vollem Werkzeugsatz umschaltet, wann wäre für Sie der richtige Moment, von einem Modus in den anderen zu wechseln?",
+      "max_chars": 500
+    },
+    "open_questions": [
+      {
+        "id": "surprise",
+        "label": "Was hat Sie an der Arbeit mit dem System am meisten überrascht (positiv oder negativ)?",
+        "max_chars": 500
+      },
+      {
+        "id": "missing",
+        "label": "Was hat Ihnen während der Sitzung am meisten gefehlt?",
+        "max_chars": 500
+      },
+      {
+        "id": "wish",
+        "label": "Wenn Sie ein einziges Werkzeug, eine Eingabeform oder eine Funktion ergänzen könnten, was wäre das?",
+        "max_chars": 300
+      }
+    ]
+  },
+  "demographics": {
+    "intro": "Zu Beginn einige kurze Fragen zu Ihrem Hintergrund. Alle Angaben sind freiwillig und werden pseudonymisiert ausgewertet.",
+    "fields": [
+      {
+        "id": "age_range",
+        "label": "Alter",
+        "kind": "select",
+        "options": ["unter 25", "25–29", "30–34", "35–39", "40+"]
+      },
+      {
+        "id": "gender",
+        "label": "Geschlecht",
+        "kind": "dropdown",
+        "options": ["weiblich", "männlich", "nicht-binär", "divers", "keine Angabe"]
+      },
+      {
+        "id": "field",
+        "label": "Studiengang / Berufsfeld",
+        "kind": "text",
+        "placeholder": "z. B. Industriedesign B.A., 4. Semester"
+      },
+      {
+        "id": "design_experience_years",
+        "label": "Designerfahrung in Jahren",
+        "kind": "select",
+        "options": ["0–1", "2–4", "5–9", "10+"]
+      },
+      {
+        "id": "cad_experience_years",
+        "label": "CAD-Erfahrung allgemein",
+        "kind": "select",
+        "options": [
+          "keine",
+          "weniger als 1 Jahr",
+          "1–3 Jahre",
+          "4–7 Jahre",
+          "8+ Jahre"
+        ]
+      },
+      {
+        "id": "rhino_self_assessment",
+        "label": "Rhino-Erfahrung",
+        "kind": "scale",
+        "scale_min": 1,
+        "scale_max": 5,
+        "anchor_min": "noch nie genutzt",
+        "anchor_max": "arbeite täglich damit"
+      },
+      {
+        "id": "grasshopper_self_assessment",
+        "label": "Grasshopper-Erfahrung",
+        "kind": "scale",
+        "scale_min": 1,
+        "scale_max": 5,
+        "anchor_min": "noch nie genutzt",
+        "anchor_max": "arbeite täglich damit"
+      },
+      {
+        "id": "other_cad_tools",
+        "label": "Weitere CAD-Werkzeuge in regelmäßiger Nutzung",
+        "kind": "multiselect",
+        "options": [
+          "SolidWorks",
+          "Fusion 360",
+          "Inventor",
+          "Onshape",
+          "SketchUp",
+          "Blender",
+          "CATIA",
+          "NX",
+          "FreeCAD",
+          "keine weiteren"
+        ],
+        "allow_other": true
+      },
+      {
+        "id": "genai_usage_frequency",
+        "label": "Erfahrung mit generativer KI im Alltag",
+        "kind": "select",
+        "options": ["nie", "gelegentlich", "regelmäßig", "täglich"]
+      },
+      {
+        "id": "genai_design_tools",
+        "label": "KI-Werkzeuge im Designprozess bereits genutzt",
+        "kind": "multiselect",
+        "options": [
+          "Bildgeneration (Stable Diffusion, Midjourney etc.)",
+          "Text-zu-3D (Meshy, Tripo etc.)",
+          "LLM-Chat (ChatGPT, Claude) beim Entwerfen/Konzipieren",
+          "Grasshopper-AI-Plugins (Ant, Raven, Zookeeper)",
+          "noch nie"
+        ],
+        "allow_other": true
+      },
+      {
+        "id": "furniture_design_experience",
+        "label": "Erfahrung mit Möbelentwurf",
+        "kind": "select",
+        "options": ["keine", "im Studium", "freie Projekte", "berufliche Praxis"]
+      }
+    ]
+  }
+}
