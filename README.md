@@ -1,7 +1,7 @@
 # Rhino AI-CAD Assistant — Code zur Masterarbeit
 
 Kuratierte Code-Basis der Masterarbeit **„Entwerfen mit Künstlicher Intelligenz:
-Ein KI-gestützter Workflow für den iterativen Möbelentwurf"**
+Ein KI-gestützter Workflow für den iterativen Möbelentwurf“**
 (M.Sc. Medieninformatik, LMU München; in Kooperation mit dem Lehrstuhl für Architekturinformatik der TUM).
 
 Das Repository enthält die zwei technischen Artefakte der Arbeit:
@@ -27,13 +27,13 @@ Start: `python main.py` (stdio-Transport), in Rhino 8 den Listener über
 
 ## 2. `plugin/` — Studienartefakt (API-Modus)
 
-Das in der qualitativen Nutzerstudie (n = 8, 16 Läufe) eingesetzte
+Das in der qualitativen Nutzerstudie (n = 8, 16 Sitzungen) eingesetzte
 Rhino-Plugin: FastAPI-Backend im Rhino-Prozess plus React-Panel. Modell-Aufrufe
-gehen direkt an die Anthropic-API. Zwei Studienkonfigurationen im selben
+gehen direkt an die Anthropic API. Zwei Studienkonfigurationen im selben
 Plugin: `basis` (Chat + Bildanhang) und `werkzeug` (zusätzliche sichtbare
 Interaktionsschicht: Punkt-/Objektreferenzen, Skizzen, Slider, Varianten,
 Dialogkarten, Vorschau-Freigabe). Beide nutzen denselben CAD-fähigen Kern
-(95 Core-CAD-Werkzeuge; `werkzeug` ergänzt 13 Interaktionswerkzeuge).
+(95 CAD-Kernwerkzeuge; `werkzeug` ergänzt 13 Interaktionswerkzeuge).
 
 - `backend/` — Agent-Loop, Tool-Registry (`build_tool_list(condition)` als
   einzige Bedingungsverzweigung), dedizierte CAD-Werkzeuge, Studien-Logging
@@ -43,12 +43,12 @@ Dialogkarten, Vorschau-Freigabe). Beide nutzen denselben CAD-fähigen Kern
 - `FEATURES.md` / `ARCHITECTURE.md` — vollständige Feature- und Code-Doku
 - `validate_hashes.py` — friert Systemprompt und Werkzeuglisten als Golden
   Hashes ein (Versionskonstanz über die Studie)
-- `shared/` (neben `plugin/`) — Code-Vorlagen in Rhino-Python, die das Backend
-  erzeugt und in Rhino ausführt
+- `shared/` (neben `plugin/`) — Rhino-Python-Vorlagen, aus denen das Backend den
+  Code erzeugt, den es in Rhino ausführt
 
 Build des Frontends: `cd plugin/web && npm install && npm run build`.
 Die Python-Pakete des Backends stehen als `# r:`-Zeilen in `plugin/start_plugin.py`.
-Das Backend erwartet eine lokale `config.json` mit eigenem Anthropic-API-Key
+Das Backend erwartet eine lokale `config.json` mit eigenem API-Schlüssel für die Anthropic API
 (bewusst nicht Teil des Repositories).
 
 ## Hinweise
