@@ -4,6 +4,10 @@ Kuratierte Code-Basis der Masterarbeit **„Entwerfen mit Künstlicher Intellige
 Ein KI-gestützter Workflow für den iterativen Möbelentwurf“**
 (M.Sc. Medieninformatik, LMU München; in Kooperation mit dem Lehrstuhl für Architekturinformatik der TUM).
 
+<a href="https://youtu.be/Qb64zsemRec"><img src="https://img.youtube.com/vi/Qb64zsemRec/maxresdefault.jpg" alt="Vorschaubild des Demo-Videos: Rhino AI Assistant, KI-Plugin für Rhino 8" width="560"></a>
+
+▶️ **[Demo-Video auf YouTube](https://youtu.be/Qb64zsemRec)**
+
 Das Repository enthält die zwei technischen Artefakte der Arbeit:
 
 ## 1. `mcp-server/` — MCP-Server der Research-through-Design-Phase
