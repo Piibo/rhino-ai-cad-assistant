@@ -43,8 +43,11 @@ Dialogkarten, Vorschau-Freigabe). Beide nutzen denselben CAD-fähigen Kern
 - `FEATURES.md` / `ARCHITECTURE.md` — vollständige Feature- und Code-Doku
 - `validate_hashes.py` — friert Systemprompt und Werkzeuglisten als Golden
   Hashes ein (Versionskonstanz über die Studie)
+- `shared/` (neben `plugin/`) — Code-Vorlagen in Rhino-Python, die das Backend
+  erzeugt und in Rhino ausführt
 
 Build des Frontends: `cd plugin/web && npm install && npm run build`.
+Die Python-Pakete des Backends stehen als `# r:`-Zeilen in `plugin/start_plugin.py`.
 Das Backend erwartet eine lokale `config.json` mit eigenem Anthropic-API-Key
 (bewusst nicht Teil des Repositories).
 
