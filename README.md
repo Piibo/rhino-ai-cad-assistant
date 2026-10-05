@@ -2,7 +2,7 @@
 
 Kuratierte Code-Basis der Masterarbeit **„Entwerfen mit Künstlicher Intelligenz:
 Ein KI-gestützter Workflow für den iterativen Möbelentwurf"**
-(M.Sc. Medieninformatik, LMU München; Betreuung TUM, Lehrstuhl für Architekturinformatik).
+(M.Sc. Medieninformatik, LMU München; in Kooperation mit dem Lehrstuhl für Architekturinformatik der TUM).
 
 Das Repository enthält die zwei technischen Artefakte der Arbeit:
 
