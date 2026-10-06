@@ -1,10 +1,8 @@
 MIT License
 
 Copyright (c) 2026 Peter Trenkle
-
-Portions derived from:
-- rhino-mcp, Copyright (c) 2025 Serjosch Duering (MIT License)
-- rhino3d-mcp, Copyright (c) 2025 Quoc Bui (MIT License)
+Copyright (c) 2025 Serjosch Duering (portions derived from rhino-mcp)
+Copyright (c) 2025 Quoc Bui (portions derived from rhino3d-mcp)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
