@@ -57,7 +57,7 @@ gelöscht.
 
 ## Kontakt
 
-Studienleitung: Peter Trenkle, p.trenkle@campus.lmu.de.
+Studienleitung: Peter Trenkle.
 Betreuung: Gerhard Schubert (TUM) — Masterarbeit am Lehrstuhl für
 Medieninformatik der LMU München.
 
